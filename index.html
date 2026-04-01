@@ -1,1 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robinson Tech Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #1e293b;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #3b82f6;
+    }
+    header h1 { font-size: 1.5rem; color: #38bdf8; letter-spacing: 0.02em; }
+    nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #38bdf8; }
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      max-width: 600px;
+      font-size: 1.125rem;
+      color: #94a3b8;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      display: inline-block;
+      background: #3b82f6;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #2563eb; }
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      padding: 3rem 2rem;
+      background: #1e293b;
+    }
+    .card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      width: 260px;
+      text-align: left;
+    }
+    .card h3 { color: #38bdf8; margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+    footer {
+      text-align: center;
+      padding: 1.25rem;
+      background: #1e293b;
+      border-top: 1px solid #334155;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Robinson Tech Solutions</h1>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
+  <section class="hero">
+    <h2>Technology That Works For You</h2>
+    <p>Robinson Tech Solutions delivers reliable, scalable software and IT consulting to help businesses grow. From web development to cloud infrastructure, we build solutions that last.</p>
+    <a href="#contact" class="btn">Get In Touch</a>
+  </section>
+
+  <section class="services" id="services">
+    <div class="card">
+      <h3>Web Development</h3>
+      <p>Modern, performant websites and web applications built with the latest technologies.</p>
+    </div>
+    <div class="card">
+      <h3>Cloud &amp; Infrastructure</h3>
+      <p>Scalable cloud solutions and DevOps practices that keep your systems running smoothly.</p>
+    </div>
+    <div class="card">
+      <h3>IT Consulting</h3>
+      <p>Strategic technology advice tailored to your business goals and budget.</p>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>&copy; 2026 Robinson Tech Solutions. All rights reserved.</p>
+  </footer>
+</body>
+</html>
