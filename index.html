@@ -1,1 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robinson Tech Solutions — Technology with a human behind it.</title>
+  <meta name="description" content="Perth-based technology services, AI automation, and data privacy. Built carefully. Run personally." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    :root {
+      --bg: #09090b;
+      --gold: #f59e0b;
+      --gold-dim: rgba(245, 158, 11, 0.15);
+      --gold-glow: rgba(245, 158, 11, 0.08);
+      --text-primary: #fafafa;
+      --text-muted: #a1a1aa;
+      --glass-bg: rgba(24, 24, 27, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --radius: 7px;
+      --font-mono: 'Space Mono', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(245, 158, 11, 0.07) 0%, transparent 60%),
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: auto, 48px 48px, 48px 48px;
+    }
+
+    /* ── TOP BAR ─────────────────────────────────────────── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 52px;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .topbar-brand {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .topbar-contact {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .topbar-contact a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .topbar-contact a:hover {
+      color: var(--text-primary);
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,158,11,0.18) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: orb-pulse 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes orb-pulse {
+      0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+      50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.12); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+
+    .hero-heading {
+      font-family: var(--font-mono);
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      background: linear-gradient(160deg, #ffffff 30%, #71717a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #09090b;
+      border-color: var(--gold);
+    }
+
+    .btn-primary:hover {
+      background: #fbbf24;
+      border-color: #fbbf24;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(245, 158, 11, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-meta {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: #52525b;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── SECTION SHARED ───────────────────────────────────── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading {
+      font-family: var(--font-mono);
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* ── GLASS PANEL ──────────────────────────────────────── */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .glass:hover {
+      border-color: rgba(245, 158, 11, 0.2);
+      transform: translateY(-3px);
+    }
+
+    /* ── PHILOSOPHY ───────────────────────────────────────── */
+    #philosophy {
+      background: transparent;
+    }
+
+    .philosophy-header {
+      margin-bottom: 3rem;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .philosophy-icon {
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .panel-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-primary);
+      margin-bottom: 0.9rem;
+    }
+
+    .panel-body {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ── ADR ──────────────────────────────────────────────── */
+    #adr {
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .adr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .adr-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .adr-list li {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .adr-list li::before {
+      content: '→';
+      color: var(--gold);
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+      margin-top: 0.05em;
+    }
+
+    .adr-trust {
+      font-size: 1.05rem;
+      color: #d4d4d8;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .adr-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.75rem;
+    }
+
+    .adr-header-sub {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── SOVEREIGN TANK ───────────────────────────────────── */
+    #sovereign-tank {
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .st-header {
+      margin-bottom: 3rem;
+    }
+
+    .st-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── CONTACT ──────────────────────────────────────────── */
+    #contact {
+      border-top: 1px solid var(--glass-border);
+      text-align: center;
+    }
+
+    .contact-header {
+      margin-bottom: 3rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      text-align: left;
+      max-width: 780px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .contact-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .contact-body {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    .contact-body a {
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-body a:hover {
+      color: var(--gold);
+    }
+
+    .contact-note {
+      font-size: 0.85rem;
+      color: #52525b;
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--glass-border);
+      padding: 3rem 2rem 2rem;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-left .footer-brand {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      background: linear-gradient(90deg, var(--gold), #fde68a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-left p,
+    .footer-right p {
+      font-size: 0.8rem;
+      color: #52525b;
+      line-height: 1.8;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .footer-bottom p {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: #3f3f46;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SCROLL REVEAL ────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .topbar-contact { display: none; }
+
+      .philosophy-grid,
+      .st-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .adr-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .footer-right {
+        text-align: left;
+      }
+
+      .hero-heading {
+        font-size: clamp(2rem, 9vw, 3rem);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar { padding: 0 1rem; }
+      section { padding: 4rem 1.25rem; }
+      .glass { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar" role="banner">
+    <a href="#" class="topbar-brand" aria-label="Robinson Tech Solutions home">ROBINSON TECH SOLUTIONS</a>
+    <nav class="topbar-contact" aria-label="Contact details">
+      <a href="tel:1300504079">1300 504 079</a>
+      <a href="mailto:hello@robinsontechsolutions.com.au">hello@robinsontechsolutions.com.au</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-orb" aria-hidden="true"></div>
+    <div class="hero-content">
+      <h1 class="hero-heading reveal">
+        TECHNOLOGY WITH<br />A HUMAN BEHIND IT.
+      </h1>
+      <p class="hero-sub reveal reveal-delay-1">
+        Perth-based technology services, AI automation, and data privacy.<br />
+        Built carefully. Run personally.
+      </p>
+      <div class="hero-buttons reveal reveal-delay-2">
+        <a href="#adr" class="btn btn-primary">AUS Data Removal →</a>
+        <a href="#sovereign-tank" class="btn btn-outline">Sovereign Tank →</a>
+      </div>
+      <p class="hero-meta reveal reveal-delay-3">
+        28/140 St Georges Terrace, Perth WA &nbsp;·&nbsp; ABN: [pending]
+      </p>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section id="philosophy" aria-labelledby="philosophy-heading">
+    <div class="container">
+      <div class="philosophy-header">
+        <p class="section-label reveal">HOW WE WORK</p>
+        <h2 class="section-heading reveal reveal-delay-1" id="philosophy-heading">We don't hide behind technology.</h2>
+      </div>
+      <div class="philosophy-grid">
+        <div class="glass reveal">
+          <div class="philosophy-icon" aria-hidden="true">◈</div>
+          <p class="panel-title">PERSONAL ACCOUNTABILITY</p>
+          <p class="panel-body">"Every engagement is handled personally. You deal with the same person from first conversation to final delivery. No handoffs. No junior staff. No call centres."</p>
+        </div>
+        <div class="glass reveal reveal-delay-1">
+          <div class="philosophy-icon" aria-hidden="true">◉</div>
+          <p class="panel-title">HONEST PRICING</p>
+          <p class="panel-body">"We tell you what things cost before you commit. No surprises on the invoice. No upselling what you don't need. If we can't help you — we'll tell you that too."</p>
+        </div>
+        <div class="glass reveal reveal-delay-2">
+          <div class="philosophy-icon" aria-hidden="true">◇</div>
+          <p class="panel-title">BUILT TO LAST</p>
+          <p class="panel-body">"We don't build things that need constant fixing. Every solution is documented, maintained, and designed to work without you having to think about it."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUS DATA REMOVAL -->
+  <section id="adr" aria-labelledby="adr-heading">
+    <div class="container">
+      <p class="section-label reveal">DIVISION ONE</p>
+      <h2 class="section-heading reveal reveal-delay-1" id="adr-heading">AUS Data Removal</h2>
+      <p class="section-sub adr-header-sub reveal reveal-delay-2">
+        Your personal data is already out there. We find it, document it, and remove it. Manually. By a real person.
+      </p>
+      <div class="adr-grid">
+        <div class="reveal">
+          <ul class="adr-list">
+            <li>Free scan — see what's publicly visible about you</li>
+            <li>Pay per removal — you only pay for what gets removed</li>
+            <li>If we can't remove it — you don't pay</li>
+            <li>Optional monitoring — $29/month, we watch and remove anything new</li>
+            <li>Full written report — $49, useful for legal situations</li>
+          </ul>
+        </div>
+        <div class="glass reveal reveal-delay-1">
+          <p class="adr-trust">
+            "Most people are surprised by what's publicly available about them. We've seen it enough times to know it's not your fault — and it's fixable."
+          </p>
+          <p class="adr-tag">Perth-based. Manual process. Real accountability.</p>
+          <a href="mailto:hello@robinsontechsolutions.com.au" class="btn btn-primary">Start with a Free Scan →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOVEREIGN TANK -->
+  <section id="sovereign-tank" aria-labelledby="st-heading">
+    <div class="container">
+      <div class="st-header">
+        <p class="section-label reveal">DIVISION TWO</p>
+        <h2 class="section-heading reveal reveal-delay-1" id="st-heading">Sovereign Tank</h2>
+        <p class="section-sub reveal reveal-delay-2">
+          AI assistants and automation for businesses, events, and individuals. Built in Perth. Deployed nationally.
+        </p>
+      </div>
+      <div class="st-grid">
+        <div class="glass reveal">
+          <p class="panel-title">BUSINESS AI</p>
+          <p class="panel-body">Custom AI assistants that handle enquiries, qualify leads, and represent your brand 24/7. Set up once. Works continuously.</p>
+        </div>
+        <div class="glass reveal reveal-delay-1">
+          <p class="panel-title">EVENT HOSTING</p>
+          <p class="panel-body">AI hosts for corporate events, private functions, and public activations. We handle the entire setup and operation.</p>
+        </div>
+        <div class="glass reveal reveal-delay-2">
+          <p class="panel-title">PERSONAL ASSISTANT</p>
+          <p class="panel-body">For individuals who want a patient, always-available AI companion. Particularly meaningful for people living independently.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <a href="mailto:hello@robinsontechsolutions.com.au" class="btn btn-outline">Explore Sovereign Tank →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact-header">
+        <h2 class="section-heading reveal" id="contact-heading">COME AND TALK TO US</h2>
+        <p class="section-sub reveal reveal-delay-1" style="margin: 0 auto;">
+          We're Perth-based and we prefer real conversations. No forms. No automated responses. A real person reads every message.
+        </p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="contact-label">VISIT OR CALL</p>
+          <div class="contact-body">
+            <p>28/140 St Georges Terrace<br />Perth WA 6000</p>
+            <br />
+            <p><a href="tel:1300504079">1300 504 079</a><br />Monday – Friday, 9am – 5pm AWST</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="contact-label">GET IN TOUCH</p>
+          <div class="contact-body" style="margin-bottom: 1.25rem;">
+            <a href="mailto:hello@robinsontechsolutions.com.au">hello@robinsontechsolutions.com.au</a>
+          </div>
+          <a href="mailto:hello@robinsontechsolutions.com.au" class="btn btn-primary">Send us a message →</a>
+        </div>
+      </div>
+      <p class="contact-note reveal">
+        "We don't do presentations. We don't run walkthroughs. We have a conversation, understand your situation, and tell you honestly whether we can help."
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-brand">ROBINSON TECH SOLUTIONS</p>
+        <p>© 2026 Robinson Tech Solutions. All rights reserved.</p>
+        <p>AUS Data Removal and Sovereign Tank are divisions of Robinson Tech Solutions.</p>
+      </div>
+      <div class="footer-right">
+        <p>Perth, Western Australia<br />
+        Operating nationally. Available internationally.<br />
+        1300 504 079</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Built in Perth.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal via IntersectionObserver
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { observer.observe(el); });
+    }());
+  </script>
+</body>
+</html>
