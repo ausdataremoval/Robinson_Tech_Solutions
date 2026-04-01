@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Robinson Tech Solutions</title>
+    <title>Decline Digital Subjugation | Robinson Tech Solutions</title>
     <style>
       :root {
         --bg: #060608;
@@ -105,6 +105,21 @@
         text-transform: uppercase;
         padding: 16px 32px;
         font-size: 0.95rem;
+        cursor: pointer;
+        transition: filter 0.2s ease, transform 0.2s ease;
+      }
+
+      .cta:hover {
+        filter: brightness(1.06);
+      }
+
+      .cta:focus-visible {
+        outline: 2px solid #fff0c4;
+        outline-offset: 3px;
+      }
+
+      .cta:active {
+        transform: translateY(1px);
       }
 
       .status-strip {
